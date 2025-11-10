@@ -3,7 +3,7 @@ import { useFavorites } from "../../store/favStore";
 import { Heart } from "lucide-react";
 
 interface FavoriteButtonProps {
-  item: { id: string; name: string; price?: number };
+  item: { id: string; name: string; price?: number; image?: string };
   className?: string;
 }
 

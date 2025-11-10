@@ -4,6 +4,7 @@ interface FavoriteItem {
   id: string;
   name: string;
   price?: number;
+  image?: string; // Add this if items have images
 }
 
 interface FavoritesState {
