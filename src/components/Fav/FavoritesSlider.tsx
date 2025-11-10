@@ -20,7 +20,8 @@ export default function FavoritesSlider({
   isOpen,
   onClose,
 }: FavoritesSliderProps) {
-  const { favorites } = useFavorites();
+  const { getCurrentUserFavorites } = useFavorites();
+  const favorites = getCurrentUserFavorites();
 
   // Close on overlay click
   const handleOverlayClick = (e: React.MouseEvent) => {

@@ -5,6 +5,7 @@ import { getAllProducts } from "../../api/sdk.gen";
 import type { Product } from "../../api/types.gen";
 import { Footer } from "../../components/Footer";
 import FavoriteButton from "../../components/Fav/FavButton";
+import BasketButton from "../../components/Basket/BasketButton";
 
 export const Catalog: React.FC = () => {
   // 1. Чтение списка
@@ -85,11 +86,19 @@ export const Catalog: React.FC = () => {
                   {product.title}
                 </h3>
 
-                {/* Price */}
+                {/* Price and Basket Button */}
                 <div className="mt-auto flex items-center justify-between">
                   <span className="text-xl font-bold text-gray-900">
                     ${product.price}
                   </span>
+                  <BasketButton
+                    item={{
+                      id: String(product.id ?? ""),
+                      name: product.title ?? "",
+                      price: product.price,
+                      image: product.image,
+                    }}
+                  />
                 </div>
               </div>
             </div>

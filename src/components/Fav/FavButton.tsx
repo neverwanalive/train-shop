@@ -1,6 +1,7 @@
 // src/components/FavoriteButton.tsx
 import { useFavorites } from "../../store/favStore";
 import { Heart } from "lucide-react";
+import { useAuth } from "../../store/authStore";
 
 interface FavoriteButtonProps {
   item: { id: string; name: string; price?: number; image?: string };
@@ -12,11 +13,12 @@ export default function FavoriteButton({
   className,
 }: FavoriteButtonProps) {
   const { isFavorite, toggleFavorite } = useFavorites();
-  const liked = isFavorite(item.id);
+  const { username } = useAuth();
+  const liked = isFavorite(item.id, username);
 
   return (
     <button
-      onClick={() => toggleFavorite(item)}
+      onClick={() => toggleFavorite(item, username)}
       className={`
         group relative p-2 rounded-full transition-all duration-200
         hover:scale-110 active:scale-95
